@@ -253,4 +253,20 @@ public class RadioTest {
         Assertions.assertEquals(expected, actual);
 
     }
+
+    @Test
+
+    public void shouldTurnDownVolumeIfOverMax() {
+        Radio radio = new Radio();
+
+        radio.setCurrentVolume(101);
+
+        radio.turnDownVolume();
+
+        int expected = 0;
+        int actual = radio.getCurrentVolume();
+
+        Assertions.assertEquals(expected, actual);
+
+    }
 }
