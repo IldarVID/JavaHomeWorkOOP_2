@@ -1,9 +1,24 @@
 package ru.netology.services;
 
+import java.util.SortedMap;
+
 public class Radio {
 
-    public int currentStation;
+    private int currentStation;
     private int currentVolume;
+    private int minStation = 0;
+    private int maxStation;
+
+    public Radio() {
+        this.maxStation = 9;
+    }
+
+    public Radio(int stationsCount) {
+        this.maxStation = stationsCount-1;
+    }
+
+
+
 
     public int getCurrentStation() {
         return currentStation;
@@ -13,32 +28,40 @@ public class Radio {
         return currentVolume;
     }
 
+    public int getMaxStation() {
+        return maxStation;
+    }
+
+    public int getMinStation() {
+        return minStation;
+    }
+
+
     public void setCurrentStation(int newCurrentStation) {
-        if (newCurrentStation < 0) {
-            newCurrentStation = 9;
+        if (newCurrentStation < minStation) {
+            newCurrentStation = maxStation;
         }
-        if (newCurrentStation > 9) {
-            newCurrentStation = 0;
+        if (newCurrentStation > maxStation) {
+            newCurrentStation = minStation;
         }
         currentStation = newCurrentStation;
     }
 
     public void nextStation() {
-        if (currentStation < 9) {
+        if (currentStation < maxStation) {
             currentStation = currentStation + 1;
         } else {
-            currentStation = 0;
+            currentStation = minStation;
         }
 
     }
 
     public void prevStation() {
 
-        if (currentStation > 0) {
+        if (currentStation > minStation) {
             currentStation = currentStation - 1;
-        }
-        else {
-            currentStation = 9;
+        } else {
+            currentStation = maxStation;
         }
 
 
