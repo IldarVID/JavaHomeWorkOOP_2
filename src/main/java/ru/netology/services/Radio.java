@@ -2,7 +2,7 @@ package ru.netology.services;
 
 public class Radio {
 
-    public int currentStation;
+    private int currentStation;
     private int currentVolume;
 
     public int getCurrentStation() {
@@ -36,8 +36,7 @@ public class Radio {
 
         if (currentStation > 0) {
             currentStation = currentStation - 1;
-        }
-        else {
+        } else {
             currentStation = 9;
         }
 
